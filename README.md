@@ -1,7 +1,7 @@
 # PCA-Expedia
 Principal Components Analysis (PCA) is a variable reduction technique which  maximizes the amount of variance accounted for in the observed variables by a smaller group of variables called COMPONENTS. I was interested to do PCA with destinations.csv object wich has 150 variables. And I represent the PCA with forward and backward best subset selection.
 ## load data
-dest <- read.csv("destinations.csv", header = T, sep=",", stringsAsFactors = F)
+`dest <- read.csv("destinations.csv", header = T, sep=",", stringsAsFactors = F)
 head(dest, 10)
 apply(dest, 2, mean)
 apply(dest, 2, var)
@@ -15,7 +15,7 @@ plot(pca_dest,type="lines")    # scree plot
 pca_dest$scores             # the principal components
 ##biplot(pca_dest)      to big to emplement but possible, 
 ##just take a time and sapce on the mamory
-biplot(pca_dest$sdev, pca_dest$scale)
+biplot(pca_dest$sdev, pca_dest$scale)`
 
 ##extract the component scores
 first.component.scores <- pca_dest$scores[,1]
