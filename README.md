@@ -14,8 +14,9 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     plot(pca_dest,type="lines")    # scree plot 
     pca_dest$scores             # the principal components
 
-##biplot(pca_dest)      to big to emplement but possible, 
-##just take a time and sapce on the mamory
+##  All destinations PCA to big to emplement but possible, it just take a time and space on the memory
+    biplot(pca_dest)  
+##  plot pca od sdev and scale     
     biplot(pca_dest$sdev, pca_dest$scale)`
 
 ##extract the component scores
@@ -57,22 +58,22 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     biplot(pca_dest1, cex = .5)
 
 ## 2 backward
-backward = regsubsets( d1~., mysam1,nbest = 1, nvmax = 8, method ="backward")
-summary(backward)
+    backward = regsubsets( d1~., mysam1,nbest = 1, nvmax = 8, method ="backward")
+    summary(backward)
 
 ## backward selection gave me d12, d13,d18, d22, d24, d33, d36  for subset to use for PCA
-mysam3 <- mysam1[, c(13, 14, 19, 23, 25, 34, 37)]  # my backward sample 
-mysam3
-summary(mysam3)
+    mysam3 <- mysam1[, c(13, 14, 19, 23, 25, 34, 37)]  # my backward sample 
+    mysam3
+    summary(mysam3)
 ## PCA
 
-pcaex2.out=prcomp(mysam3, scale=TRUE)
-pcaex2.out
-hist(pcaex2.out$rotation)
+    pcaex2.out=prcomp(mysam3, scale=TRUE)
+    pcaex2.out
+    hist(pcaex2.out$rotation)
 
-pca_dest2 <- princomp(mysam3, cor=TRUE)
-summary(pca_dest2)
-loadings(pca_dest2) # pc loadings 
-plot(pca_dest2,type="lines") # scree plot 
-pca_dest2$scores # the principal components
-biplot(pca_dest2, cex = .5)
+    pca_dest2 <- princomp(mysam3, cor=TRUE)
+    summary(pca_dest2)
+    loadings(pca_dest2) # pc loadings 
+    plot(pca_dest2,type="lines") # scree plot 
+    pca_dest2$scores # the principal components
+    biplot(pca_dest2, cex = .5)
