@@ -29,7 +29,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     length(second.component.scores)
 
 
-## I want to represent PCA with Forward and Fackward  best subset selecton
+## I want to represent PCA with Forward and Backward  best subset selecton
     require(leaps)
 
 ##I took tiny random sample
@@ -41,7 +41,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     forward = regsubsets(d1~., mysam1, method ="forward")
     summary(forward)
 
-## its get me d35, d52,d57, d62, d89, d119, d145 forsubset to use for PCA
+## its get me d35, d52,d57, d62, d89, d119, d145 for subset to use for PCA
     mysam2 <- mysam1[, c(36,53,58, 63, 90, 120, 146)]
     mysam2
     summary(mysam2)
