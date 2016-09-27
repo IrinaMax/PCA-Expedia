@@ -41,7 +41,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     forward = regsubsets(d1~., mysam1, method ="forward")
     summary(forward)
 
-## its get me d35, d52,d57, d62, d89, d119, d145 for subset to use for PCA
+## its get me d35, d52,d57, d62, d89, d119, d145 for subset to use for PCA and it will be (36,53,58, 63, 90, 120, 146) set
     mysam2 <- mysam1[, c(36,53,58, 63, 90, 120, 146)]
     mysam2
     summary(mysam2)
