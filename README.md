@@ -16,7 +16,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
 
 ##  All destinations PCA to big to emplement but possible, it just take a time and space on the memory
     biplot(pca_dest)  
-##  plot pca od sdev and scale     
+##  plot pca of sdev and scale     
     biplot(pca_dest$sdev, pca_dest$scale)`
 
 ##extract the component scores
