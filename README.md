@@ -12,7 +12,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     loadings(pca_dest)             # pc loadings 
     pca_dest$sd^2                  # component variances
     plot(pca_dest,type="lines")    # scree plot 
-    pca_dest$scores             # the principal components
+    pca_dest$scores                # the principal components
 
 ##  All destinations PCA to big to emplement but possible, it just take a time and space on the memory
     biplot(pca_dest)  
@@ -74,6 +74,6 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     pca_dest2 <- princomp(mysam3, cor=TRUE)
     summary(pca_dest2)
     loadings(pca_dest2) # pc loadings 
-    plot(pca_dest2,type="lines") # scree plot 
+    plot(pca_dest2,type="lines")             # scree plot 
     pca_dest2$scores # the principal components
     biplot(pca_dest2, cex = .5)
