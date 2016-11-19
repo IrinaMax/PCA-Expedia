@@ -49,6 +49,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     pcaex1.out=prcomp(mysam2, scale=TRUE)
     pcaex1.out
     hist(pcaex1.out$rotation)
+![pca_hust_forward_50sample](https://cloud.githubusercontent.com/assets/16123495/20453308/c2f90f06-add4-11e6-9abf-04272f9a008c.png)
 
     pca_dest1 <- princomp(mysam2, cor=TRUE)
     summary(pca_dest1)
@@ -70,8 +71,7 @@ Principal Components Analysis (PCA) is a variable reduction technique which  max
     pcaex2.out=prcomp(mysam3, scale=TRUE)
     pcaex2.out
     hist(pcaex2.out$rotation)
-    ![pca_hust_forward_50sample](https://cloud.githubusercontent.com/assets/16123495/20453308/c2f90f06-add4-11e6-9abf-04272f9a008c.png)
-
+   
     pca_dest2 <- princomp(mysam3, cor=TRUE)
     summary(pca_dest2)
     loadings(pca_dest2) # pc loadings 
