@@ -1,0 +1,50 @@
+# Line 41 for the one-line piped super fast GROUP BY + WHERE + CALCULATED FIELD + COUNT
+
+# This is supposed to show that:
+# * If you want to book, you MUST have searched beforehand
+# * If you booked, you searched at least once beforehand (it could be before or after booking though)
+# * Someone booked 100 times (n) in Expedia!!!!!!!!
+# * Someone went ham to search 530 times (sum_list) in Expedia!
+# * A typical user books 3.686 times (n) in average, while having searched in average 39.81 times (sum_list)
+# * A typical user books at a ratio of ~1/7.05 (0.141876, booking_ratio)
+# * N.B: it's obvious that mean(booking_ratio) != (mean(n)/mean(sum_list)), if you don't believe me you must go back to basic Statistics courses
+
+# Example of ultra fast data parsing, without SQL
+# SQL benchmark is like 100x more slower
+# Note that the data you create is in memory limbo (dynamic), so you better don't mess up with anything directly you do to the memory
+# (targeting users of memory cleaners, periodic contiguity memory makers, etc.)
+
+# R ultra fast GROUP BY + WHERE + CALCULATED FIELD + COUNT (takes 1 second at most on 37mil. rows)
+
+#    user_id          is_booking       n              sum_list      booking_ratio     
+# Min.   :      5   Min.   :1    Min.   :  1.000   Min.   :  3.00   Min.   :0.002445  
+# 1st Qu.: 300389   1st Qu.:1    1st Qu.:  1.000   1st Qu.: 10.00   1st Qu.:0.060000  
+# Median : 601593   Median :1    Median :  2.000   Median : 21.00   Median :0.114583  
+# Mean   : 601567   Mean   :1    Mean   :  3.686   Mean   : 39.81   Mean   :0.141876  
+# 3rd Qu.: 902721   3rd Qu.:1    3rd Qu.:  4.000   3rd Qu.: 48.00   3rd Qu.:0.200000  
+# Max.   :1198784   Max.   :1    Max.   :100.000   Max.   :530.00   Max.   :0.868421
+
+# Print some diagnosis stuff
+cat("My current memory at the beginning of this stage:\n", sep = "")
+gc()
+
+# Load required libraries
+library(readr)
+library(data.table) # ME = MEMORY HUNGRY
+library(dplyr)
+
+# Load data
+# data <- fread('../input/train.csv') # ME = MEMORY HUNGRY
+train <- data.table(read_csv('../input/train.csv'))
+
+# Do the super fast GROUP BY + WHERE + CALCULATED FIELD + COUNT
+user_ids <- data %>% count(user_id, is_booking) %>% mutate(sum_list = sum(n)) %>% filter(is_booking == 1) %>% mutate(booking_ratio = n/sum_list)
+
+# Print some stuff
+summary(user_ids) #summary to look data at
+head(user_ids, n=99)
+
+# Print some diagnosis stuff
+cat("My current memory at the end of this stage (I ate a lot, SirEatsALot):\n", sep = "")
+gc() #prints memory usage
+cat("\nTypical memory usage using RAM optimizations in Linux should be 1.7x lower.", sep = "")
