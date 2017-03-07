@@ -1,5 +1,5 @@
  
-##@irinads: I cooked this up really quick to show merge (which is in the base package)
+## I cooked this up really quick to show merge (which is in the base package)
 
 df1 <- data.frame(id=integer(100), val1=character(100))
 df2 <- data.frame(id=integer(80), val2=character(80))
