@@ -1,6 +1,6 @@
 # Kaggle Expedia
 
-setwd("C:/Users/dalyea/Documents/R/Expedia")
+setwd("C:/Users/irinamahmudjanova/Desktop/R/Expedia")
 
 source("../common.R")
 require("plyr")
